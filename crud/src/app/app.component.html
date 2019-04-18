@@ -1,0 +1,57 @@
+<div class="container mt-5">
+
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+        <div class="form-group row">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Title</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" placeholder="title" formControlName="title" required>
+            </div>
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Description</label>
+            <div class="col-sm-10 mt-2">
+                <input type="text" class="form-control" placeholder="description" formControlName="description">
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-10 offset-sm-2">
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+        </div>
+    </form>
+    <div *ngIf="description.touched || title.touched">
+        <p *ngIf="title.errors.required">Title is required</p>
+    </div>
+    <!-- <div class="card" *ngFor="let p of products; let i = index">
+        <div class="card-body">
+            <h4 class="card-title">{{i}} - {{p.title}}</h4>
+            <p class="card-text">
+                {{p.description}}
+            </p>
+            <button type="button" class="btn btn-danger" (click)="delete(i)">Delete</button>
+            <button type="button" class="btn btn-info ml-2" (click)="edit(i)">Edit</button>
+        </div>
+    </div> -->
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of products; let i = index">
+                <td>{{p.title}}</td>
+                <td>{{p.description}}</td>
+                <td>
+                    <button type="button" class="btn btn-danger" (click)="delete(i)">Delete</button>
+                    <button type="button" class="btn btn-info ml-2" (click)="edit(i)">Edit</button>
+                </td>
+
+            </tr>
+
+        </tbody>
+    </table>
+
+
+</div>
